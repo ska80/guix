@@ -1,4 +1,4 @@
-(use-modules (gnu)
+(use-modules (gnu packages)
              (nongnu packages linux)
              (nongnu system linux-initrd))
 
