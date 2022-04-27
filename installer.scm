@@ -37,6 +37,7 @@
   (operating-system
     (inherit installation-os)
     (kernel linux)
+    (initrd microcode-initrd)
     (firmware (list linux-firmware))
 
     ;; Add the 'net.ifnames' argument to prevent network interfaces
