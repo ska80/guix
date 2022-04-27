@@ -1,0 +1,2 @@
+# guix
+Guix configuration
