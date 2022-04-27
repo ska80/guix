@@ -1,10 +1,15 @@
 ;; This is an operating system configuration generated
 ;; by the graphical installer.
 
-(use-modules (gnu))
+(use-modules (gnu)
+             (nongnu packages linux)
+             (nongnu system linux-initrd))
 (use-service-modules desktop networking ssh xorg)
 
 (operating-system
+  (kernel linux)
+  (initrd microcode-initrd)
+  (firmware (list linux-firmware))
   (locale "en_US.utf8")
   (timezone "Asia/Bishkek")
   (keyboard-layout (keyboard-layout "us"))
@@ -35,19 +40,19 @@
       %desktop-services))
   (bootloader
     (bootloader-configuration
-      (bootloader grub-bootloader)
-      (target "/dev/sda")
+      (bootloader grub-efi-bootloader)
+      (target "/boot/efi")
       (keyboard-layout keyboard-layout)))
   (mapped-devices
     (list (mapped-device
             (source
-              (uuid "3071ce3b-b593-49de-9085-3abda9cfbadc"))
-            (target "cryptroot")
+              (uuid "17eac23d-3f36-4ea4-aa99-537571620d0a"))
+            (target "system-root")
             (type luks-device-mapping))))
   (file-systems
     (cons* (file-system
              (mount-point "/")
-             (device "/dev/mapper/cryptroot")
+             (device "/dev/mapper/system-root")
              (type "ext4")
              (dependencies mapped-devices))
            %base-file-systems)))
