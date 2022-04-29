@@ -1,7 +1,7 @@
-(use-modules (gnu packages)
-             (nongnu packages linux)
+(use-modules (gnu)
+             (gnu packages shells))
+(use-modules (nongnu packages linux)
              (nongnu system linux-initrd))
-
 (use-service-modules desktop networking ssh xorg)
 
 (operating-system
@@ -32,7 +32,7 @@
           "htop" "powertop"
           "emacs" "vim"
           "ffmpeg" "mpv"
-          "gnupg@2.0" "nss-certs"))
+          "gnupg@2" "nss-certs"))
    %base-packages))
 
  (services
@@ -67,8 +67,8 @@
  (file-systems
   (cons* (file-system
           (mount-point "/boot/efi")
-          (device (uuid "F872-B72A" 'fat)
-                  (type "vfat")))
+          (device (uuid "F872-B72A" 'fat))
+          (type "vfat"))
          (file-system
           (mount-point "/")
           (device "/dev/mapper/system-root")
