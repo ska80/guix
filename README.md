@@ -1,2 +1,3 @@
 # guix
+
 Guix configuration

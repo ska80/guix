@@ -30,7 +30,6 @@
   #:use-module (gnu packages mtools)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
-  #:use-module (nongnu system linux-initrd)
   #:use-module (guix)
   #:export (installation-os-nonfree))
 
@@ -38,7 +37,6 @@
   (operating-system
     (inherit installation-os)
     (kernel linux)
-    (initrd microcode-initrd)
     (firmware (list linux-firmware))
 
     ;; Add the 'net.ifnames' argument to prevent network interfaces
